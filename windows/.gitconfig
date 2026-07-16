@@ -1,0 +1,32 @@
+[user]
+    email = 69819379+ash-dvlpr@users.noreply.github.com
+    name = Ash Dev
+    signingKey = ""
+[pull]
+    rebase = true
+[core]
+    longpaths = true
+    autocrlf = true
+	sshCommand = C:/Windows/System32/OpenSSH/ssh.exe
+[gpg]
+    program = gpg
+[commit]
+    gpgSign = false
+    template = C:\\Users\\ash\\.gitmessage
+[tag]
+    forceSignAnnotated = false
+[init]
+    defaultBranch = main
+[safe]
+    directory = E:/Dev/*
+	directory = E:/Docs/obsidian/*
+[difftool "sourcetree"]
+    cmd = 'C:/Program Files/Microsoft VS Code/Code.exe' --diff --wait $LOCAL $REMOTE
+[mergetool "sourcetree"]
+    cmd = 'C:/Program Files/Microsoft VS Code/Code.exe' -n --wait $MERGED
+    trustExitCode = true
+[filter "lfs"]
+    required = true
+    clean = git-lfs clean -- %f
+    smudge = git-lfs smudge -- %f
+    process = git-lfs filter-process
