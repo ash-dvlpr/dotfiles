@@ -1,32 +1,89 @@
 [user]
-    email = 69819379+ash-dvlpr@users.noreply.github.com
-    name = Ash Dev
+	email = ""
+	name = ""
     signingKey = ""
-[pull]
-    rebase = true
-[core]
-    longpaths = true
-    autocrlf = true
-	sshCommand = C:/Windows/System32/OpenSSH/ssh.exe
 [gpg]
+    format = ssh
     program = gpg
 [commit]
     gpgSign = false
-    template = C:\\Users\\ash\\.gitmessage
-[tag]
-    forceSignAnnotated = false
+    template = C:/Users/ash/.gitmessage
+[fetch]
+	writeCommitGraph = true
+[push]
+    autoSetupRemote = true
+# [pull]
+    # autostash = true
+    # rebase = true
+[rebase]
+    updateRefs = true
+    autostash = true
+[rerere]
+	enabled = true
+[branch]
+	sort = -committerdate
+[column]
+	ui = auto
 [init]
     defaultBranch = main
-[safe]
-    directory = E:/Dev/*
-	directory = E:/Docs/obsidian/*
+[core]
+    fsmonitor = true
+    untrackedcach = true
+    longpaths = true
+    autocrlf = true
+	sshCommand = C:/Windows/System32/OpenSSH/ssh.exe
+[tag]
+    forceSignAnnotated = false
+
+[alias]
+    alias     = "! git config --get-regexp '^alias\\.' | sed -e 's/^alias\\.//' -e 's/ / = /'"
+    unstage    = "reset HEAD --"
+
+    ecommit    = "commit --allow-empty"
+    unstash    = "stash pop"
+    stash-h    = "! echo \"stash-?   Options:\n - H       help\n - S       staged\n - U[U]    unstaged [+untracked]\n - A       all\""
+    stash-l    = "stash list"
+    # S (staged) - U[U] (unstaged[+untracked]) - A (all)
+    stash-s    = "stash push --staged"
+    stash-u    = "stash push --keep-index"
+    stash-uu   = "stash push --keep-index --include-untracked"
+    stash-a    = "stash push --include-untracked"
+
+    amend      = "commit --amend --allow-empty"
+    fix        = "!f() { git commit --fixup=\"$1\" \"${@:2}\"; }; f"
+    fix-amend  = "!f() { git commit --allow-empty --fixup=amend:\"$1\" \"${@:2}\"; }; f"
+    fix-rename = "!f() { git commit --allow-empty --fixup=reword:\"$1\" \"${@:2}\"; }; f"
+    fix-squash = "rebase --autostash --autosquash"
+
+    fpush      = "push --force-with-lease"
+    ffpush     = "push --force"
+
+    branchl    = "branch -avv"
+    branchn    = "switch --create"
+    merge-u    = "merge --allow-unrelated-histories"
+
+    last       = "log -1 HEAD"
+    bblame     = "blame -wCCC"
+    wdiff      = "diff --word-diff"
+
+    clone-nb   = "clone --filter=blob:none"
+
 [difftool "sourcetree"]
-    cmd = 'C:/Program Files/Microsoft VS Code/Code.exe' --diff --wait $LOCAL $REMOTE
+	cmd = "'' "
 [mergetool "sourcetree"]
-    cmd = 'C:/Program Files/Microsoft VS Code/Code.exe' -n --wait $MERGED
+	cmd = "'' "
     trustExitCode = true
+	keepBackup = false
 [filter "lfs"]
     required = true
     clean = git-lfs clean -- %f
     smudge = git-lfs smudge -- %f
     process = git-lfs filter-process
+
+[safe]
+    directory = E:/Dev/*
+	directory = E:/Docs/obsidian/*
+
+[maintenance]
+	auto = false
+    strategy = incremental
